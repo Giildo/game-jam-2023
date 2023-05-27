@@ -1,16 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://lobby/x_a_buttons.png" type="Texture" id=1]
 [ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://lobby/arrow.png" type="Texture" id=3]
 [ext_resource path="res://lobby/add_button.png" type="Texture" id=4]
 [ext_resource path="res://lobby/player_icon.gd" type="Script" id=5]
+[ext_resource path="res://lobby/icons/back_icon.tres" type="Texture" id=6]
+[ext_resource path="res://lobby/icons/ok_icon.tres" type="Texture" id=7]
+[ext_resource path="res://lobby/icons/IconeSelect.png" type="Texture" id=8]
+[ext_resource path="res://lobby/icons/IconeReady.png" type="Texture" id=9]
+[ext_resource path="res://lobby/icons/IconeInvalid.png" type="Texture" id=10]
+[ext_resource path="res://lobby/icons/IconeJoin.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Swap"
 
 [node name="PlayerIcon" type="VBoxContainer"]
 margin_right = 40.0
@@ -19,6 +28,12 @@ rect_min_size = Vector2( 250, 0 )
 custom_constants/separation = 20
 alignment = 1
 script = ExtResource( 5 )
+ok_icon = ExtResource( 7 )
+back_icon = ExtResource( 6 )
+icon_join = ExtResource( 11 )
+icon_invalid = ExtResource( 10 )
+icon_select = ExtResource( 8 )
+icon_ready = ExtResource( 9 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 250.0
@@ -71,7 +86,7 @@ margin_left = 35.0
 margin_right = 105.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 70, 32 )
-texture = ExtResource( 1 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
@@ -106,3 +121,6 @@ margin_bottom = 44.0
 custom_fonts/font = SubResource( 1 )
 text = "to join"
 align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Swap = SubResource( 3 )
