@@ -6,16 +6,24 @@ var is_assigned = false setget _set_assigned
 var is_selected = false setget _set_selected
 
 
+export var ok_icon: Texture
+export var back_icon: Texture
+
+export var icon_join: Texture 
+export var icon_invalid: Texture 
+export var icon_select: Texture 
+export var icon_ready: Texture 
+
+
 func _ready():
-	_set_assigned(false)
 	_set_selected(false)
+	_set_assigned(false)
 	player_id = get_index()
 
 func _input(event: InputEvent):
 	if (event is InputEventJoypadButton and  not event.is_echo()
 		and event.is_pressed() and event.device == player_id):
-
-		
+			
 		if event.button_index == JOY_SONY_X:
 			if is_assigned:
 				_set_selected(true)
@@ -29,14 +37,8 @@ func _input(event: InputEvent):
 			
 
 func _set_assigned(value: bool):
-	$HBoxContainer/Icon.texture = (
-		preload("res://lobby/base_icon.png") if value else
-		preload("res://lobby/add_button.png")
-	)
-	$Tooltips/TooltipJoin/Buttons.texture = (
-		preload("res://lobby/b_o_buttons.png") if value else
-		preload("res://lobby/x_a_buttons.png")
-	)
+	$HBoxContainer/Icon.texture = icon_select if value else icon_join
+	$Tooltips/TooltipJoin/Buttons.texture = back_icon if value else ok_icon
 
 	$Tooltips/TooltipJoin/Label.text = (
 		"leave" if value else "join"
@@ -46,11 +48,8 @@ func _set_assigned(value: bool):
 
 
 func _set_selected(value: bool):
-	
-	$Tooltips/TooltipSelect/Buttons.texture = (
-		preload("res://lobby/b_o_buttons.png") if value else
-		preload("res://lobby/x_a_buttons.png")
-	)
+	$HBoxContainer/Icon.texture = icon_ready if value else icon_select
+	$Tooltips/TooltipSelect/Buttons.texture = back_icon if value else ok_icon
 	
 	$Tooltips/TooltipSelect/Label.text = (
 		"de-select" if value else "select"
