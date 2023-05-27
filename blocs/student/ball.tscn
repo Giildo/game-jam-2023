@@ -4,17 +4,15 @@
 [ext_resource path="res://blocs/bloc.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 190.066
+radius = 190.591
 
 [node name="Bloc" instance=ExtResource( 2 )]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
-polygon = PoolVector2Array( 162, -43, -28, 151, 165, 342, 355, 152, 219.215, 14.8078 )
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
-disabled = true
 
 [node name="Sprite" parent="." index="2"]
 visible = true

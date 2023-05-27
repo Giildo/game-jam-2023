@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/4.png-756edac4e597efef0eb69ba95fac2ef4.stex"
+path="res://.import/omega.png-b2504f180d9a0f72e5f10386914e441f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blocs/translater/4.png"
-dest_files=[ "res://.import/4.png-756edac4e597efef0eb69ba95fac2ef4.stex" ]
+source_file="res://blocs/translator/omega.png"
+dest_files=[ "res://.import/omega.png-b2504f180d9a0f72e5f10386914e441f.stex" ]
 
 [params]
 
