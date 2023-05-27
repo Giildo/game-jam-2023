@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/AXBox.png-a7afa2c36c40b661ad19452aaf419fd0.stex"
+path="res://.import/BXBox.png-09156f7486e59f7a4f8562e8559b65ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lobby/icons/AXBox.png"
-dest_files=[ "res://.import/AXBox.png-a7afa2c36c40b661ad19452aaf419fd0.stex" ]
+source_file="res://lobby/icons/buttons/BXBox.png"
+dest_files=[ "res://.import/BXBox.png-09156f7486e59f7a4f8562e8559b65ef.stex" ]
 
 [params]
 

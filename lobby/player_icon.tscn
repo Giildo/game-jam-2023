@@ -1,31 +1,21 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://lobby/x_a_buttons.png" type="Texture" id=1]
-[ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://gui/assets/font_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://lobby/arrow.png" type="Texture" id=3]
-[ext_resource path="res://lobby/add_button.png" type="Texture" id=4]
 [ext_resource path="res://lobby/player_icon.gd" type="Script" id=5]
-[ext_resource path="res://lobby/icons/back_icon.tres" type="Texture" id=6]
-[ext_resource path="res://lobby/icons/ok_icon.tres" type="Texture" id=7]
+[ext_resource path="res://lobby/icons/buttons/back_icon.tres" type="Texture" id=6]
+[ext_resource path="res://lobby/icons/buttons/ok_icon.tres" type="Texture" id=7]
 [ext_resource path="res://lobby/icons/IconeSelect.png" type="Texture" id=8]
 [ext_resource path="res://lobby/icons/IconeReady.png" type="Texture" id=9]
 [ext_resource path="res://lobby/icons/IconeInvalid.png" type="Texture" id=10]
 [ext_resource path="res://lobby/icons/IconeJoin.png" type="Texture" id=11]
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="Animation" id=3]
-resource_name = "Swap"
-
 [node name="PlayerIcon" type="VBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 250.0
+margin_bottom = 230.0
 rect_min_size = Vector2( 250, 0 )
-custom_constants/separation = 20
+custom_constants/separation = 24
 alignment = 1
 script = ExtResource( 5 )
 ok_icon = ExtResource( 7 )
@@ -36,91 +26,102 @@ icon_select = ExtResource( 8 )
 icon_ready = ExtResource( 9 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 250.0
-margin_bottom = 100.0
-custom_constants/separation = 21
+margin_right = 288.0
+margin_bottom = 192.0
+custom_constants/separation = 16
 alignment = 1
 
 [node name="Left" type="TextureButton" parent="HBoxContainer"]
-margin_left = 34.0
-margin_right = 54.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 20, 10 )
+margin_right = 32.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 32, 32 )
 texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 5
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer"]
-margin_left = 75.0
-margin_right = 175.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 4 )
+margin_left = 48.0
+margin_right = 240.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 192, 192 )
+texture = ExtResource( 11 )
 expand = true
 stretch_mode = 6
 
+[node name="Character" type="TextureRect" parent="HBoxContainer/Icon"]
+visible = false
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+stretch_mode = 6
+
 [node name="Right" type="TextureButton" parent="HBoxContainer"]
-margin_left = 196.0
-margin_right = 216.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 20, 10 )
+margin_left = 256.0
+margin_right = 288.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 32, 32 )
 texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 5
 flip_h = true
 
 [node name="Tooltips" type="VBoxContainer" parent="."]
-margin_top = 120.0
-margin_right = 250.0
-margin_bottom = 230.0
+margin_top = 216.0
+margin_right = 288.0
+margin_bottom = 326.0
 rect_min_size = Vector2( 0, 110 )
+custom_constants/separation = 8
 
 [node name="TooltipSelect" type="HBoxContainer" parent="Tooltips"]
-margin_right = 250.0
-margin_bottom = 44.0
-custom_constants/separation = 8
-alignment = 1
+margin_left = 68.0
+margin_right = 220.0
+margin_bottom = 48.0
+size_flags_horizontal = 4
+custom_constants/separation = 16
 
 [node name="Buttons" type="TextureRect" parent="Tooltips/TooltipSelect"]
-margin_left = 35.0
-margin_right = 105.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 70, 32 )
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Tooltips/TooltipSelect"]
-margin_left = 113.0
-margin_right = 214.0
-margin_bottom = 44.0
-custom_fonts/font = SubResource( 1 )
-text = "to select"
+margin_left = 64.0
+margin_right = 152.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "select"
 align = 1
 
 [node name="TooltipJoin" type="HBoxContainer" parent="Tooltips"]
-margin_top = 48.0
-margin_right = 250.0
-margin_bottom = 92.0
-custom_constants/separation = 8
-alignment = 1
+margin_left = 86.0
+margin_top = 56.0
+margin_right = 202.0
+margin_bottom = 104.0
+size_flags_horizontal = 4
+custom_constants/separation = 16
 
 [node name="Buttons" type="TextureRect" parent="Tooltips/TooltipJoin"]
-margin_left = 49.0
-margin_right = 119.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 70, 32 )
-texture = ExtResource( 1 )
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Tooltips/TooltipJoin"]
-margin_left = 127.0
-margin_right = 200.0
-margin_bottom = 44.0
-custom_fonts/font = SubResource( 1 )
-text = "to join"
+margin_left = 64.0
+margin_right = 116.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "join"
 align = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Swap = SubResource( 3 )
