@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Bloc",
+"language": "GDScript",
+"path": "res://blocs/bloc.gd"
+}, {
 "base": "Node",
 "class": "Controller",
 "language": "GDScript",
 "path": "res://controller.gd"
 } ]
 _global_script_class_icons={
+"Bloc": "",
 "Controller": ""
 }
 
