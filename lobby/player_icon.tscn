@@ -15,18 +15,20 @@ font_data = ExtResource( 2 )
 [node name="PlayerIcon" type="VBoxContainer"]
 margin_right = 40.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 250, 0 )
 custom_constants/separation = 20
 alignment = 1
 script = ExtResource( 5 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 182.0
+margin_right = 250.0
 margin_bottom = 100.0
 custom_constants/separation = 21
 alignment = 1
 
 [node name="Left" type="TextureButton" parent="HBoxContainer"]
-margin_right = 20.0
+margin_left = 34.0
+margin_right = 54.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 20, 10 )
 texture_normal = ExtResource( 3 )
@@ -34,8 +36,8 @@ expand = true
 stretch_mode = 5
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer"]
-margin_left = 41.0
-margin_right = 141.0
+margin_left = 75.0
+margin_right = 175.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 4 )
@@ -43,8 +45,8 @@ expand = true
 stretch_mode = 6
 
 [node name="Right" type="TextureButton" parent="HBoxContainer"]
-margin_left = 162.0
-margin_right = 182.0
+margin_left = 196.0
+margin_right = 216.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 20, 10 )
 texture_normal = ExtResource( 3 )
@@ -52,25 +54,55 @@ expand = true
 stretch_mode = 5
 flip_h = true
 
-[node name="Tooltip" type="HBoxContainer" parent="."]
+[node name="Tooltips" type="VBoxContainer" parent="."]
 margin_top = 120.0
-margin_right = 182.0
-margin_bottom = 164.0
+margin_right = 250.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 0, 110 )
+
+[node name="TooltipSelect" type="HBoxContainer" parent="Tooltips"]
+margin_right = 250.0
+margin_bottom = 44.0
 custom_constants/separation = 8
 alignment = 1
 
-[node name="Buttons" type="TextureRect" parent="Tooltip"]
-margin_left = 15.0
-margin_right = 85.0
+[node name="Buttons" type="TextureRect" parent="Tooltips/TooltipSelect"]
+margin_left = 35.0
+margin_right = 105.0
 margin_bottom = 44.0
-rect_min_size = Vector2( 70, 0 )
+rect_min_size = Vector2( 70, 32 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Tooltip"]
-margin_left = 93.0
-margin_right = 166.0
+[node name="Label" type="Label" parent="Tooltips/TooltipSelect"]
+margin_left = 113.0
+margin_right = 214.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "to select"
+align = 1
+
+[node name="TooltipJoin" type="HBoxContainer" parent="Tooltips"]
+margin_top = 48.0
+margin_right = 250.0
+margin_bottom = 92.0
+custom_constants/separation = 8
+alignment = 1
+
+[node name="Buttons" type="TextureRect" parent="Tooltips/TooltipJoin"]
+margin_left = 49.0
+margin_right = 119.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 70, 32 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Tooltips/TooltipJoin"]
+margin_left = 127.0
+margin_right = 200.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 1 )
 text = "to join"
+align = 1
