@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/omega.png-ccc86cc27e934798ef42497054310d04.stex"
+path="res://.import/Craie - Balle.png-d8c60a82c97c7b6aec49b86ccf587ee6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blocs/translater/omega.png"
-dest_files=[ "res://.import/omega.png-ccc86cc27e934798ef42497054310d04.stex" ]
+source_file="res://blocs/translator/Craie - Balle.png"
+dest_files=[ "res://.import/Craie - Balle.png-d8c60a82c97c7b6aec49b86ccf587ee6.stex" ]
 
 [params]
 

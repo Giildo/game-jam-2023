@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Craie - Ardoise.png-1eb0a5fd9169525f9c4a9bd3f609fe2c.stex"
+path="res://.import/m.png-3e0d59289914bce7442a8de1e31d8893.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blocs/translater/Craie - Ardoise.png"
-dest_files=[ "res://.import/Craie - Ardoise.png-1eb0a5fd9169525f9c4a9bd3f609fe2c.stex" ]
+source_file="res://blocs/translator/m.png"
+dest_files=[ "res://.import/m.png-3e0d59289914bce7442a8de1e31d8893.stex" ]
 
 [params]
 

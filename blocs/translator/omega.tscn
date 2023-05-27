@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://blocs/translater/omega.png" type="Texture" id=1]
+[ext_resource path="res://blocs/translator/omega.png" type="Texture" id=1]
 [ext_resource path="res://blocs/bloc.tscn" type="PackedScene" id=2]
 
 [node name="Bloc" instance=ExtResource( 2 )]
