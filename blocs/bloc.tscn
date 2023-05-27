@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://blocs/bloc.gd" type="Script" id=2]
+
+[node name="Bloc" type="RigidBody2D"]
+gravity_scale = 1.5
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -165, -152 )
+polygon = PoolVector2Array( 201, 83, 74, 134, 125, 226, 269, 160 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
