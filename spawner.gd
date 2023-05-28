@@ -10,6 +10,7 @@ var current_block: Bloc
 var can_spawn = true
 
 signal has_spawned
+signal finished
 
 enum CharactersType {
 	STUDENT,
@@ -126,6 +127,7 @@ func _ready():
 
 func spawn() -> void:
 	if not can_spawn:
+		emit_signal("finished")
 		return
 	
 	var spawn_position = Vector2(

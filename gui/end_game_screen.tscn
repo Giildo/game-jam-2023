@@ -1,0 +1,153 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://gui/assets/title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://lobby/icons/buttons/back_icon.tres" type="Texture" id=3]
+[ext_resource path="res://lobby/icons/buttons/start_icon.tres" type="Texture" id=4]
+[ext_resource path="res://gui/end_game_screen.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -8
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 130
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -8
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 68
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -8
+font_data = ExtResource( 1 )
+
+[node name="EndGameScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -53, 455 )
+script = ExtResource( 5 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.568627 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -428.0
+margin_top = -389.0
+margin_right = 428.0
+margin_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 80
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 856.0
+margin_bottom = 156.0
+custom_colors/font_color = Color( 1, 0.713726, 0.901961, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "No thoughts left"
+align = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 236.0
+margin_right = 856.0
+margin_bottom = 483.0
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+margin_right = 856.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "You managed to reach:"
+align = 1
+
+[node name="Score" type="Label" parent="VBoxContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 856.0
+margin_bottom = 247.0
+custom_fonts/font = SubResource( 2 )
+text = "4500 m"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -321.0
+margin_top = -212.0
+margin_right = 321.0
+margin_bottom = -112.0
+custom_constants/separation = 169
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+margin_right = 252.0
+margin_bottom = 100.0
+custom_constants/margin_top = -15
+custom_constants/margin_bottom = -2
+
+[node name="Retry" type="HBoxContainer" parent="HBoxContainer/MarginContainer2"]
+margin_top = -15.0
+margin_right = 252.0
+margin_bottom = 102.0
+size_flags_horizontal = 4
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Buttons" type="TextureRect" parent="HBoxContainer/MarginContainer2/Retry"]
+margin_right = 100.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/Retry"]
+margin_left = 116.0
+margin_right = 252.0
+margin_bottom = 117.0
+custom_constants/margin_top = 14
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/Retry/MarginContainer"]
+margin_top = 23.0
+margin_right = 136.0
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 3 )
+text = "Retry"
+align = 1
+
+[node name="Lobby" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 421.0
+margin_right = 642.0
+margin_bottom = 100.0
+size_flags_horizontal = 4
+custom_constants/separation = 16
+
+[node name="Buttons" type="TextureRect" parent="HBoxContainer/Lobby"]
+margin_right = 80.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 80, 80 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="HBoxContainer/Lobby"]
+margin_left = 96.0
+margin_top = 7.0
+margin_right = 221.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 3 )
+text = "Menu"
+align = 1

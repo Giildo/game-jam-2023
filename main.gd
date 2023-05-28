@@ -2,10 +2,12 @@ extends Node
 
 
 # Declare member variables here. Examples:
-var spawners: Array
+var spawners = []
+var finished = 0
+var current_characters = []
 
 export var base_items_count = {
-	2: 10,
+	2: 2,
 	3: 55,
 	4: 60,
 }
@@ -13,19 +15,38 @@ export var base_items_count = {
 var available_items = 0
 
 func start_game(characters: Array) -> void:
+	for b in get_tree().get_nodes_in_group('blocs'):
+		b.queue_free()
+	for s in spawners:
+		s.queue_free()
+	spawners.clear()
+	
+	$SmoothCamera.position = Vector2.ZERO
+	finished = 0
+	current_characters = characters
 	available_items = base_items_count[characters.size()]
 	_update_count_display()
+	$CanvasLayer/HUD.show()
 	
 	for i in range(characters.size()):
 		var spawner = Spawner.new(characters[i], characters.size(), i)
 		spawner.connect("has_spawned", self, "_decrease_spawn")
+		spawner.connect("finished", self, "_check_finished")
 		spawners.append(spawner)
 		add_child(spawner)
 
 
+func _check_finished():
+	finished += 1
+	if finished == spawners.size():
+		end_game()
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$CanvasLayer/HUD.hide()
+	$CanvasLayer/EndGameScreen.hide()
+	$CanvasLayer/EndGameScreen/HBoxContainer/Lobby.show()
 
 
 func _update_count_display():
@@ -40,6 +61,14 @@ func _decrease_spawn():
 			s.can_spawn = false
 	_update_count_display()
 
+
+
+
+func end_game():
+	yield(get_tree().create_timer(1.0),"timeout")
+	$CanvasLayer/HUD.hide()
+	$CanvasLayer/EndGameScreen.show()
+	
 
 func get_scroll_direction() -> float:
 	$Top.force_raycast_update()
@@ -62,3 +91,16 @@ func get_scroll_direction() -> float:
 
 func _on_Lobby_game_start_requested(characters):
 	start_game(characters)
+
+
+func _on_EndGameScreen_restart_requested():
+	$CanvasLayer/EndGameScreen.hide()
+	start_game(current_characters)
+	
+
+
+func _on_EndGameScreen_menu_requested():
+	$CanvasLayer/EndGameScreen.hide()
+	$CanvasLayer/Lobby.reset_selection()
+	
+	$CanvasLayer/Lobby.show()

@@ -40,6 +40,12 @@ func _update_play_status():
 	$PlayTooltip.visible = can_play
 
 
+func reset_selection():
+	for p in players:
+		if p.is_selected:
+			p.is_selected = false
+
+
 func start_game():
 	var characters = []
 	for p in players:

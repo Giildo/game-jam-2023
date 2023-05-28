@@ -34,6 +34,9 @@ func _ready():
 
 
 func _input(event: InputEvent):
+	if not is_visible_in_tree():
+		return
+	
 	if event.is_pressed() and not event.is_echo():
 		if event.is_action("p%d_accept" % player_id):
 			if is_assigned:
