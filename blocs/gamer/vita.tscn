@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://blocs/bloc.tscn" type="PackedScene" id=1]
+[ext_resource path="res://blocs/gamer/vita.png" type="Texture" id=2]
+
+[node name="Bloc" instance=ExtResource( 1 )]
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PoolVector2Array( 235, 88, 81, 108, 63, 119, 52, 136, 47, 159, 48, 181, 54, 194, 66, 203, 78, 206, 235, 201, 256, 194, 273, 179, 282, 160, 283, 140, 279, 118, 268, 102, 254, 92 )
+
+[node name="Sprite" parent="." index="1"]
+visible = true
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )

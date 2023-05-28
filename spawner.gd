@@ -35,6 +35,20 @@ var blocs_scenes = {
 			"proba": 4.1,
 		},
 	],
+	CharactersType.GAMER: [
+#		{
+#			"bloc": preload("res://blocs/gamer/controller.tscn"),
+#			"proba": 4.1,
+#		},
+		{
+			"bloc": preload("res://blocs/gamer/game.tscn"),
+			"proba": 2.5,
+		},
+		{
+			"bloc": preload("res://blocs/gamer/vita.tscn"),
+			"proba": 3.0,
+		},
+	],
 	CharactersType.BUILDER: [
 		{
 			"bloc": preload("res://blocs/btp/cone.tscn"),
@@ -119,6 +133,7 @@ func spawn() -> void:
 	randomize()
 	current_block = get_block(rand_range(0, 10))
 	current_block.position = spawn_position
+	current_block.rotation = rand_range(0, 1) * TAU
 	current_block.player_index = player_index + 1
 	current_block.connect("on_floor", self, "new_spawn")
 	add_child(current_block)
