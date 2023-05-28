@@ -7,6 +7,7 @@ extents = Vector2( 500, 50 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 960, 1025 )
+collision_layer = 3
 __meta__ = {
 "_edit_group_": true
 }

@@ -20,6 +20,8 @@ func _ready():
 	connect("body_entered", self, "has_collision")
 
 func _integrate_forces(state):
+	applied_force = Vector2.ZERO
+	applied_torque = 0.0
 	if (controlled):
 		var velocity_h = Input.get_axis("p1_left", "p1_right")
 		var velocity_t = Input.get_axis("p1_top", "p1_bottom")
@@ -29,6 +31,7 @@ func _integrate_forces(state):
 		applied_torque = target_rotation * multi_rotate
 
 func stop_item():
+	collision_layer = 0b11
 	controlled = false
 	contact_monitor = false
 	contacts_reported = 0
