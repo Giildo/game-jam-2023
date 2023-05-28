@@ -43,13 +43,14 @@ func _integrate_forces(state):
 
 func stop_item():
 	collision_layer = 0b11
+	collision_mask = 0b1
 	controlled = false
 	contact_monitor = false
 	contacts_reported = 0
 	emit_signal("on_floor")
 
 func has_collision (item: PhysicsBody2D) -> void:
-	if item is StaticBody2D:
+	if item is StaticBody2D and not item.is_in_group("walls"):
 		stop_item()
 	elif item.is_in_group("blocs") and not item.controlled:
 		stop_item()

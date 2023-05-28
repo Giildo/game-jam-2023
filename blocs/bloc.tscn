@@ -4,6 +4,7 @@
 [ext_resource path="res://blocs/bloc.gd" type="Script" id=2]
 
 [node name="Bloc" type="RigidBody2D" groups=["blocs"]]
+collision_mask = 5
 gravity_scale = 1.5
 script = ExtResource( 2 )
 

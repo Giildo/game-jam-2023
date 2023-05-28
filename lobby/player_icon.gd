@@ -70,14 +70,14 @@ func _update_type():
 
 func _update_type_icon():
 	$HBoxContainer/Icon/Character.texture = types[selected_type].texture
-	$Tooltips/TooltipSelect.visible = true
+	$Tooltips/TooltipSelect.modulate = Color.white
 	if is_assigned:
 		if is_selected:
 			$HBoxContainer/Icon.texture = icon_ready
 		else:
 			$HBoxContainer/Icon.texture = icon_select if types[selected_type].available else icon_invalid
 			$HBoxContainer/Icon/Character.self_modulate = Color.white if types[selected_type].available else Color.gray
-			$Tooltips/TooltipSelect.visible = types[selected_type].available
+			$Tooltips/TooltipSelect.modulate = Color.white if types[selected_type].available else Color.darkgray
 
 func _set_assigned(value: bool):
 	$HBoxContainer/Icon.texture = icon_select if value else icon_join
