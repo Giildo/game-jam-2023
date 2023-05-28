@@ -24,15 +24,15 @@ var blocs_scenes = {
 	CharactersType.STUDENT: [
 		{
 			"bloc": preload("res://blocs/student/ball.tscn"),
-			"proba": 1.5,
+			"proba": 0.0,
 		},
 		{
 			"bloc": preload("res://blocs/student/ruler.tscn"),
-			"proba": 4.0,
+			"proba": 0.0,
 		},
 		{
 			"bloc": preload("res://blocs/student/slate.tscn"),
-			"proba": 4.5,
+			"proba": 10.0,
 		},
 	],
 	CharactersType.TRANSLATOR: [
@@ -88,8 +88,9 @@ func _ready():
 func spawn() -> void:
 	var spawn_position = Vector2(
 		(get_viewport().size.x * (player_index + 1)) / (nb + 1),
-		 50
+		 -get_viewport().canvas_transform.origin.y
 	)
+	print(get_viewport().canvas_transform)
 	randomize()
 	current_block = get_block(rand_range(0, 10))
 	current_block.position = spawn_position

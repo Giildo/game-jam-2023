@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://camera/smooth_camera.gd" type="Script" id=1]
+[ext_resource path="res://height_estimator.tscn" type="PackedScene" id=2]
+
+[node name="SmoothCamera" type="Camera2D"]
+anchor_mode = 0
+current = true
+smoothing_enabled = true
+script = ExtResource( 1 )
+
+[node name="HeightEstimator" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1018, -1021 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
