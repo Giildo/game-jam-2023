@@ -24,15 +24,29 @@ var blocs_scenes = {
 	CharactersType.STUDENT: [
 		{
 			"bloc": preload("res://blocs/student/ball.tscn"),
-			"proba": 0.0,
+			"proba": 1.6,
 		},
 		{
 			"bloc": preload("res://blocs/student/ruler.tscn"),
-			"proba": 0.0,
+			"proba": 4.3,
 		},
 		{
 			"bloc": preload("res://blocs/student/slate.tscn"),
-			"proba": 10.0,
+			"proba": 4.1,
+		},
+	],
+	CharactersType.BUILDER: [
+		{
+			"bloc": preload("res://blocs/btp/cone.tscn"),
+			"proba": 2.9,
+		},
+		{
+			"bloc": preload("res://blocs/btp/sign.tscn"),
+			"proba": 2.2,
+		},
+		{
+			"bloc": preload("res://blocs/btp/trestle.tscn"),
+			"proba": 4.9,
 		},
 	],
 	CharactersType.TRANSLATOR: [
@@ -67,9 +81,10 @@ func _init(characterType, nb: int, player_index):
 #func _input(event):
 
 func get_block(range_nb: float) -> Bloc:
+	print_debug(range_nb)
 	var proba: float = 0
 	for bloc_settings in blocs_scenes[type]:
-		proba = bloc_settings.proba
+		proba += bloc_settings.proba
 		if range_nb <= proba:
 			return  bloc_settings.bloc.instance()
 			
@@ -91,6 +106,7 @@ func spawn() -> void:
 	randomize()
 	current_block = get_block(rand_range(0, 10))
 	current_block.position = spawn_position
+	current_block.player_index = player_index + 1
 	current_block.connect("on_floor", self, "new_spawn")
 	add_child(current_block)
 

@@ -6,8 +6,12 @@
 [node name="Bloc" instance=ExtResource( 1 )]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
-polygon = PoolVector2Array( 385, 107, -68, 106, -68, 173, 385, 173 )
+position = Vector2( -130.533, -112 )
+scale = Vector2( 0.8, 0.8 )
+polygon = PoolVector2Array( 385, 105, -68.3333, 105, -68, 173, 385, 173 )
 
 [node name="Sprite" parent="." index="1"]
 visible = true
+position = Vector2( 2.46667, 9 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )

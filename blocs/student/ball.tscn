@@ -9,11 +9,14 @@ radius = 190.591
 [node name="Bloc" instance=ExtResource( 2 )]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PoolVector2Array( 171, 137, 142, 143, 159, 172, 183, 156 )
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="." index="2"]
 visible = true
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
