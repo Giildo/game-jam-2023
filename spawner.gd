@@ -24,15 +24,15 @@ var blocs_scenes = {
 	CharactersType.STUDENT: [
 		{
 			"bloc": preload("res://blocs/student/ball.tscn"),
-			"proba": 0.0,
+			"proba": 1.5,
 		},
 		{
 			"bloc": preload("res://blocs/student/ruler.tscn"),
-			"proba": 0.0,
+			"proba": 4.0,
 		},
 		{
 			"bloc": preload("res://blocs/student/slate.tscn"),
-			"proba": 10.0,
+			"proba": 4.5,
 		},
 	],
 	CharactersType.TRANSLATOR: [
@@ -91,6 +91,7 @@ func spawn() -> void:
 	randomize()
 	current_block = get_block(rand_range(0, 10))
 	current_block.position = spawn_position
+	current_block.player_index = player_index + 1
 	current_block.connect("on_floor", self, "new_spawn")
 	add_child(current_block)
 

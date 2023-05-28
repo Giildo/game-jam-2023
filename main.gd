@@ -12,7 +12,7 @@ func start_game(characters: Array) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_game([Spawner.CharactersType.STUDENT])
+	start_game([Spawner.CharactersType.STUDENT, Spawner.CharactersType.TRANSLATOR])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
