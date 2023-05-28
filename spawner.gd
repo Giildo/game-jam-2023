@@ -60,7 +60,6 @@ var blocs_scenes = {
 }
 
 func _init(characterType, nb: int, player_index):
-	print(characterType, nb, player_index)
 	type = characterType
 	self.nb = nb
 	self.player_index = player_index
@@ -71,7 +70,6 @@ func get_block(range_nb: float) -> Bloc:
 	var proba: float = 0
 	for bloc_settings in blocs_scenes[type]:
 		proba = bloc_settings.proba
-		print(range_nb, proba)
 		if range_nb <= proba:
 			return  bloc_settings.bloc.instance()
 			
@@ -90,7 +88,6 @@ func spawn() -> void:
 		(get_viewport().size.x * (player_index + 1)) / (nb + 1),
 		 -get_viewport().canvas_transform.origin.y
 	)
-	print(get_viewport().canvas_transform)
 	randomize()
 	current_block = get_block(rand_range(0, 10))
 	current_block.position = spawn_position
