@@ -40,16 +40,16 @@ anchor_mode = 0
 current = true
 smoothing_enabled = true
 script = SubResource( 1 )
-step_size = 100
+step_size = 650
 
 [node name="Top" type="RayCast2D" parent="."]
-position = Vector2( 0, 603 )
+position = Vector2( -1, 530 )
 enabled = true
 cast_to = Vector2( 1920, 0 )
 collision_mask = 2
 
 [node name="Bottom" type="RayCast2D" parent="."]
-position = Vector2( 0, 734 )
+position = Vector2( 0, 707 )
 enabled = true
 cast_to = Vector2( 1920, 0 )
 collision_mask = 2
