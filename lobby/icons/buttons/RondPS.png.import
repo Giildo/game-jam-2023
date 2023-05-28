@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RondPS.png-8918a485532b7b6b3034c21b73fe7f4b.stex"
+path="res://.import/RondPS.png-33ccafeaae9e99270efbe516e2b8c7df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lobby/icons/RondPS.png"
-dest_files=[ "res://.import/RondPS.png-8918a485532b7b6b3034c21b73fe7f4b.stex" ]
+source_file="res://lobby/icons/buttons/RondPS.png"
+dest_files=[ "res://.import/RondPS.png-33ccafeaae9e99270efbe516e2b8c7df.stex" ]
 
 [params]
 

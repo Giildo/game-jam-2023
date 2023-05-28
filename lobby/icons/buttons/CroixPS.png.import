@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CroixPS.png-977c97a360f003df57a2658c17eb401a.stex"
+path="res://.import/CroixPS.png-d2f5a8164567dabd487baf930ee9e682.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lobby/icons/CroixPS.png"
-dest_files=[ "res://.import/CroixPS.png-977c97a360f003df57a2658c17eb401a.stex" ]
+source_file="res://lobby/icons/buttons/CroixPS.png"
+dest_files=[ "res://.import/CroixPS.png-d2f5a8164567dabd487baf930ee9e682.stex" ]
 
 [params]
 
