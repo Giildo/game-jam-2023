@@ -49,6 +49,20 @@ var blocs_scenes = {
 			"proba": 4.9,
 		},
 	],
+	CharactersType.DOCTOR: [
+		{
+			"bloc": preload("res://blocs/doctor/bone.tscn"),
+			"proba": 3.5,
+		},
+		{
+			"bloc": preload("res://blocs/doctor/lung.tscn"),
+			"proba": 2.5,
+		},
+		{
+			"bloc": preload("res://blocs/doctor/muscle.tscn"),
+			"proba": 4.0,
+		},
+	],
 	CharactersType.TRANSLATOR: [
 		{
 			"bloc": preload("res://blocs/translator/4.tscn"),
@@ -81,7 +95,6 @@ func _init(characterType, nb: int, player_index):
 #func _input(event):
 
 func get_block(range_nb: float) -> Bloc:
-	print_debug(range_nb)
 	var proba: float = 0
 	for bloc_settings in blocs_scenes[type]:
 		proba += bloc_settings.proba

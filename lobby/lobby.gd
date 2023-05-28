@@ -36,7 +36,6 @@ func _on_player_deselection(type):
 
 
 func _update_play_status():
-	print(players_count)
 	can_play = (players_count >= 2)
 	$PlayTooltip.visible = can_play
 
@@ -44,7 +43,8 @@ func _update_play_status():
 func start_game():
 	var characters = []
 	for p in players:
-		characters.append((p.selected_type))
+		if p.is_assigned:
+			characters.append((p.selected_type))
 	
 	emit_signal("game_start_requested", characters)
 	hide()
