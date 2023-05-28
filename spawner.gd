@@ -24,15 +24,29 @@ var blocs_scenes = {
 	CharactersType.STUDENT: [
 		{
 			"bloc": preload("res://blocs/student/ball.tscn"),
-			"proba": 1.5,
+			"proba": 1.6,
 		},
 		{
 			"bloc": preload("res://blocs/student/ruler.tscn"),
-			"proba": 4.0,
+			"proba": 4.3,
 		},
 		{
 			"bloc": preload("res://blocs/student/slate.tscn"),
-			"proba": 4.5,
+			"proba": 4.1,
+		},
+	],
+	CharactersType.BUILDER: [
+		{
+			"bloc": preload("res://blocs/btp/cone.tscn"),
+			"proba": 2.9,
+		},
+		{
+			"bloc": preload("res://blocs/btp/sign.tscn"),
+			"proba": 2.2,
+		},
+		{
+			"bloc": preload("res://blocs/btp/trestle.tscn"),
+			"proba": 4.9,
 		},
 	],
 	CharactersType.TRANSLATOR: [
@@ -67,9 +81,10 @@ func _init(characterType, nb: int, player_index):
 #func _input(event):
 
 func get_block(range_nb: float) -> Bloc:
+	print_debug(range_nb)
 	var proba: float = 0
 	for bloc_settings in blocs_scenes[type]:
-		proba = bloc_settings.proba
+		proba += bloc_settings.proba
 		if range_nb <= proba:
 			return  bloc_settings.bloc.instance()
 			

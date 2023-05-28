@@ -4,10 +4,14 @@
 [ext_resource path="res://blocs/translator/d.png" type="Texture" id=2]
 
 [node name="Bloc" instance=ExtResource( 1 )]
+scale = Vector2( 0.6, 0.6 )
 
 [node name="CollisionPolygon2D" parent="." index="0"]
-polygon = PoolVector2Array( 75, -64, 72, 28, 61, 127, 42, 179, 21, 222, -12, 222, -12, 374, 47, 375, 47, 280, 296, 280, 296, 375, 354, 375, 354, 222, 317, 222, 317, -64 )
+position = Vector2( -98.3333, -91.6667 )
+scale = Vector2( 0.6, 0.6 )
+polygon = PoolVector2Array( 75, -64, 72, 28, 61, 127, 42, 179, 21, 222, -12, 222, -12, 374, 47, 375, 47, 280, 296, 280, 296, 289.583, 296, 375, 354, 375, 354, 222, 317, 222, 317, -64 )
 
 [node name="Sprite" parent="." index="1"]
 visible = true
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )

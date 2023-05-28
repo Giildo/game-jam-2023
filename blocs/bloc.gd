@@ -22,7 +22,6 @@ func _ready():
 	connect("body_entered", self, "has_collision")
 
 func _integrate_forces(state):
-	print(player_index)
 	applied_force = Vector2.ZERO
 	applied_torque = 0.0
 	if (controlled):

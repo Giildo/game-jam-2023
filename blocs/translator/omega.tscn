@@ -6,12 +6,11 @@
 [node name="Bloc" instance=ExtResource( 2 )]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
-position = Vector2( -297, -22 )
+position = Vector2( -104, -8 )
+scale = Vector2( 0.35, 0.35 )
 polygon = PoolVector2Array( 83, 127, 76, 133, 94, 225, 245, 224, 246, 215, 199, 113, 169, -11, 174, -76, 195, -128, 240, -169, 292, -189, 329, -179, 383, -140, 411, -87, 419, -9, 400, 78, 340, 217, 344, 225, 494, 225, 512, 133, 505, 127, 487, 160, 468, 176, 391, 178, 390, 173, 476, 79, 497, 32, 503, -33, 489, -94, 451, -146, 400, -185, 339, -206, 295, -210, 252, -207, 192, -186, 133, -144, 93, -82, 83, -7, 103, 68, 197, 173, 196, 178, 122, 176, 99, 159 )
 
 [node name="Sprite" parent="." index="1"]
 visible = true
+scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
