@@ -1,7 +1,60 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://lobby/lobby.gd" type="Script" id=1]
 [ext_resource path="res://lobby/player_icon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://lobby/icons/buttons/start_icon.tres" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=3]
+size = 80
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -8
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "Blink"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Lobby" type="Control"]
 anchor_right = 1.0
@@ -18,19 +71,68 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -768.0
-margin_top = -161.0
-margin_right = 768.0
-margin_bottom = 161.0
-custom_constants/separation = 128
+margin_left = -892.0
+margin_top = -223.0
+margin_right = 892.0
+margin_bottom = 127.0
+rect_pivot_offset = Vector2( 897, 153 )
+custom_constants/separation = 70
 alignment = 1
 
 [node name="P1" parent="Players" instance=ExtResource( 2 )]
-margin_left = 416.0
-margin_right = 704.0
-margin_bottom = 326.0
+margin_left = 87.0
+margin_right = 437.0
+margin_bottom = 350.0
 
 [node name="P2" parent="Players" instance=ExtResource( 2 )]
-margin_left = 832.0
-margin_right = 1120.0
-margin_bottom = 326.0
+margin_left = 507.0
+margin_right = 857.0
+margin_bottom = 350.0
+
+[node name="P3" parent="Players" instance=ExtResource( 2 )]
+margin_left = 927.0
+margin_right = 1277.0
+margin_bottom = 350.0
+
+[node name="P4" parent="Players" instance=ExtResource( 2 )]
+margin_left = 1347.0
+margin_right = 1697.0
+margin_bottom = 350.0
+
+[node name="PlayTooltip" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -257.0
+margin_top = -222.0
+margin_right = 257.0
+margin_bottom = -94.0
+custom_constants/separation = 22
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayTooltip"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayTooltip"]
+margin_left = 150.0
+margin_right = 514.0
+margin_bottom = 128.0
+custom_constants/margin_top = 16
+
+[node name="Label" type="Label" parent="PlayTooltip/MarginContainer"]
+margin_top = 21.0
+margin_right = 364.0
+margin_bottom = 122.0
+custom_fonts/font = SubResource( 3 )
+text = "START GAME"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayTooltip"]
+autoplay = "Blink"
+anims/Blink = SubResource( 1 )
+anims/RESET = SubResource( 2 )
