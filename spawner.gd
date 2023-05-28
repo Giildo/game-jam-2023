@@ -2,15 +2,14 @@ class_name Spawner
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var bloc
 var type
 var nb: int
 var player_index: int
 var current_block: Bloc
+var can_spawn = true
+
+signal has_spawned
 
 enum CharactersType {
 	STUDENT,
@@ -126,6 +125,9 @@ func _ready():
 #	pass
 
 func spawn() -> void:
+	if not can_spawn:
+		return
+	
 	var spawn_position = Vector2(
 		(get_viewport().size.x * (player_index + 1)) / (nb + 1),
 		 -get_viewport().canvas_transform.origin.y
@@ -135,6 +137,7 @@ func spawn() -> void:
 	current_block.position = spawn_position
 	current_block.rotation = rand_range(0, 1) * TAU
 	current_block.player_index = player_index + 1
+	emit_signal("has_spawned")
 	current_block.connect("on_floor", self, "new_spawn")
 	add_child(current_block)
 
