@@ -5,16 +5,18 @@
 
 [sub_resource type="PhysicsMaterial" id=1]
 resource_name = "PhysicsSign"
-friction = 0.45
+friction = 0.8
+bounce = 0.1
+absorbent = true
 
 [node name="Bloc" instance=ExtResource( 1 )]
 mass = 40.0
 physics_material_override = SubResource( 1 )
 multi_velocity = Vector2( 1000, 800 )
-multi_rotate = 300000
+multi_rotate = 400000
 basic_fall_speed = 0.3
-floor_lin_damp = 0.4
-floor_ang_damp = 0.4
+floor_lin_damp = 1.5
+floor_ang_damp = 1.5
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 position = Vector2( -182, -167 )

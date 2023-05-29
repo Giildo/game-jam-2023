@@ -5,19 +5,18 @@
 
 [sub_resource type="PhysicsMaterial" id=1]
 resource_name = "PhysicsTrestle"
-friction = 0.9
 rough = true
-bounce = 1.0
+bounce = 0.8
 absorbent = true
 
 [node name="Bloc" instance=ExtResource( 1 )]
 mass = 40.0
 physics_material_override = SubResource( 1 )
 multi_velocity = Vector2( 1500, 600 )
-multi_rotate = 300000
+multi_rotate = 400000
 basic_fall_speed = 0.15
-floor_lin_damp = 0.8
-floor_ang_damp = 0.8
+floor_lin_damp = 2.0
+floor_ang_damp = 2.0
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 position = Vector2( -116, -106 )

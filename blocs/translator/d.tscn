@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://blocs/bloc.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blocs/translator/d.png" type="Texture" id=2]
 
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.9
+bounce = 0.1
+
 [node name="Bloc" instance=ExtResource( 1 )]
 scale = Vector2( 0.6, 0.6 )
+mass = 10.0
+physics_material_override = SubResource( 1 )
+basic_fall_speed = 0.15
+floor_lin_damp = 2.0
+floor_ang_damp = 2.0
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 position = Vector2( -98.3333, -91.6667 )

@@ -5,16 +5,17 @@
 
 [sub_resource type="PhysicsMaterial" id=1]
 resource_name = "PhysicsCone"
-friction = 0.2
+friction = 0.5
 rough = true
-bounce = 0.3
+bounce = 0.2
 absorbent = true
 
 [node name="Bloc" instance=ExtResource( 1 )]
 mass = 20.0
 physics_material_override = SubResource( 1 )
-multi_rotate = 150000
 basic_fall_speed = 0.5
+floor_lin_damp = 1.0
+floor_ang_damp = 1.0
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 position = Vector2( -66, -61 )

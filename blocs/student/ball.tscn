@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://blocs/student/ball.png" type="Texture" id=1]
 [ext_resource path="res://blocs/bloc.tscn" type="PackedScene" id=2]
+
+[sub_resource type="PhysicsMaterial" id=2]
+friction = 0.5
+bounce = 1.0
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 190.591
 
 [node name="Bloc" instance=ExtResource( 2 )]
+mass = 10.0
+physics_material_override = SubResource( 2 )
+angular_damp = 3.0
+multi_velocity = Vector2( 3000, 900 )
+multi_rotate = 1000000
+basic_fall_speed = 0.5
+floor_lin_damp = 0.0
+floor_ang_damp = 0.0
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 polygon = PoolVector2Array( 171, 137, 142, 143, 159, 172, 183, 156 )

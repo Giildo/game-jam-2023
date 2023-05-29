@@ -38,6 +38,8 @@ func _integrate_forces(state):
 		)
 		if velocity_t <= 0:
 			velocity_t = velocity_t / 3 + basic_fall_speed
+		else:
+			velocity_t = velocity_t + basic_fall_speed
 		var target_rotation = Input.get_axis(
 			"p%d_rotate_left" % player_index, 
 			"p%d_rotate_right" % player_index
