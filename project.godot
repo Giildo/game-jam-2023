@@ -32,7 +32,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Gam jam"
+config/name="High Thougths"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
