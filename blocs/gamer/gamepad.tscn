@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://blocs/bloc.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blocs/gamer/gamepad.png" type="Texture" id=2]
 
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.5
+bounce = 0.1
+absorbent = true
+
 [node name="Bloc" instance=ExtResource( 1 )]
+mass = 20.0
+physics_material_override = SubResource( 1 )
+angular_damp = 6.0
+multi_velocity = Vector2( 3000, 800 )
+multi_rotate = 800000
+basic_fall_speed = 0.5
+floor_lin_damp = 1.0
+floor_ang_damp = 1.0
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 polygon = PoolVector2Array( 264, 101, 253, 91, 250, 86, 240, 79, 221, 74, 213, 75, 207, 80, 144, 78, 141, 74, 130, 70, 108, 74, 91, 82, 88, 90, 79, 97, 60, 152, 53, 195, 58, 221, 67, 233, 82, 237, 92, 233, 108, 215, 125, 197, 220, 189, 235, 209, 249, 218, 264, 210, 271, 198, 276, 177, 275, 148 )
