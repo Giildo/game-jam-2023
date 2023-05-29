@@ -7,7 +7,7 @@ var finished = 0
 var current_characters = []
 
 export var base_items_count = {
-	2: 2,
+	2: 50,
 	3: 55,
 	4: 60,
 }

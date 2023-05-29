@@ -36,10 +36,10 @@ var blocs_scenes = {
 		},
 	],
 	CharactersType.GAMER: [
-#		{
-#			"bloc": preload("res://blocs/gamer/controller.tscn"),
-#			"proba": 4.1,
-#		},
+		{
+			"bloc": preload("res://blocs/gamer/gamepad.tscn"),
+			"proba": 4.1,
+		},
 		{
 			"bloc": preload("res://blocs/gamer/game.tscn"),
 			"proba": 2.5,
