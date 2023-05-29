@@ -5,7 +5,10 @@ extends RigidBody2D
 # var a = 2
 # var b = "text"
 export var multi_velocity = Vector2(200, 100)
-var multi_rotate = 200000
+export var multi_rotate = 200000
+export var basic_fall_speed = 0.2 #Modificateur de vitesse de chute appliquee a l'objet lorsque le stick n'est pas vers le bas
+export var floor_lin_damp = 0.0 #Deceleration lineaire au sol
+export var floor_ang_damp = 0.0 #Deceleration de rotation au sol
 
 var player_index = 0
 
@@ -33,13 +36,17 @@ func _integrate_forces(state):
 			"p%d_top" % player_index, 
 			"p%d_bottom" % player_index
 		)
+		if velocity_t <= 0:
+			velocity_t = velocity_t / 3 + basic_fall_speed
+		else:
+			velocity_t = velocity_t + basic_fall_speed
 		var target_rotation = Input.get_axis(
 			"p%d_rotate_left" % player_index, 
 			"p%d_rotate_right" % player_index
 		)
 		
-		applied_force = Vector2(velocity_h, velocity_t) * multi_velocity
-		applied_torque = target_rotation * multi_rotate
+		applied_force = Vector2(velocity_h, velocity_t) * multi_velocity * mass
+		applied_torque = target_rotation * multi_rotate * mass
 
 func stop_item():
 	collision_layer = 0b11
@@ -47,6 +54,8 @@ func stop_item():
 	controlled = false
 	contact_monitor = false
 	contacts_reported = 0
+	linear_damp = floor_lin_damp
+	angular_damp = floor_ang_damp
 	emit_signal("on_floor")
 
 func has_collision (item: PhysicsBody2D) -> void:

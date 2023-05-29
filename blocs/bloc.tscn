@@ -5,8 +5,14 @@
 
 [node name="Bloc" type="RigidBody2D" groups=["blocs"]]
 collision_mask = 5
-gravity_scale = 1.5
+gravity_scale = 4.0
+linear_damp = 2.0
+angular_damp = 8.0
 script = ExtResource( 2 )
+multi_velocity = Vector2( 1500, 800 )
+multi_rotate = 500000
+floor_lin_damp = 0.1
+floor_ang_damp = 0.1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -165, -152 )
