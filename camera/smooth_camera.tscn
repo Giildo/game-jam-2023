@@ -5,6 +5,8 @@ script/source = "extends Camera2D
 
 export var step_size = 50
 
+var lost = preload(\"res://effects/LostItem.tscn\")
+
 func get_scroll_direction() -> float:
 	$Top.force_raycast_update()
 	$Bottom.force_raycast_update()
@@ -25,8 +27,15 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body: Node):
 	if body.is_in_group(\"blocs\") and body.controlled:
+		var position_x = body.position.x
 		body.stop_item()
 		body.queue_free()
+	
+		var l = lost.instance()
+		l.position.x = position_x
+		l.position.y = get_viewport().get_visible_rect().size.y
+		
+		add_child(l)
 "
 
 [sub_resource type="RectangleShape2D" id=2]

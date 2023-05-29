@@ -57,13 +57,13 @@ func stop_item():
 	linear_damp = floor_lin_damp
 	angular_damp = floor_ang_damp
 	emit_signal("on_floor")
+	Input.start_joy_vibration(player_index - 1, 0, 0.75, 0.4)
 
 func has_collision (item: PhysicsBody2D) -> void:
 	if item is StaticBody2D and not item.is_in_group("walls"):
 		stop_item()
-	elif item.is_in_group("blocs") and not item.controlled:
-		stop_item()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	
+	elif item.is_in_group("blocs"):
+		if not item.controlled:
+			stop_item()
+		else :
+			Input.start_joy_vibration(player_index - 1, 0.5, 0.25, 0.2)

@@ -33,6 +33,7 @@ func start_game(characters: Array) -> void:
 	_update_count_display()
 	$CanvasLayer/HUD.show()
 	
+	yield(get_tree().create_timer(1.0), "timeout")
 	for i in range(characters.size()):
 		var spawner = Spawner.new(characters[i], characters.size(), i)
 		spawner.connect("has_spawned", self, "_decrease_spawn")
