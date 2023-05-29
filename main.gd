@@ -9,7 +9,7 @@ var is_in_game = false
 
 var current_height = 0
 var max_height = 0
-export var min_max_height = 3
+export var min_max_height = 1
 export var meter_unit = 150
 export var base_items_count = {
 	2: 20,
@@ -32,6 +32,7 @@ func start_game(characters: Array) -> void:
 	available_items = base_items_count[characters.size()]
 	_update_count_display()
 	$CanvasLayer/HUD.show()
+	_update_height()
 	
 	yield(get_tree().create_timer(1.0), "timeout")
 	for i in range(characters.size()):
@@ -43,7 +44,6 @@ func start_game(characters: Array) -> void:
 	
 	is_in_game = true
 	_load_data()
-	_update_height()
 
 func _check_finished():
 	finished += 1
@@ -66,13 +66,22 @@ func _ready():
 	$CanvasLayer/HUD.hide()
 	$CanvasLayer/EndGameScreen.hide()
 	$CanvasLayer/EndGameScreen/HBoxContainer/Lobby.show()
+	
+	$SmoothCamera.connect('item_lost', self, "_lost_item")
 
+func _lost_item() -> void:
+	_decrease_spawn()
+	_decrease_spawn()
+	
 
 func _update_count_display():
 	$CanvasLayer/HUD/ItemsCount/Value.text = str(available_items)
 
 
 func _decrease_spawn():
+	if available_items == 0:
+		return
+	
 	available_items -= 1
 	if available_items == 0:
 		for s in spawners:
@@ -95,6 +104,9 @@ func _load_data() -> void:
 
 func _save_score() -> void:
 	if (current_height > max_height):
+		$CanvasLayer/EndGameScreen/Sticker.show()
+		$CanvasLayer/EndGameScreen/VBoxContainer/HighScore/Label.hide()
+		
 		var data = {
 			"score": current_height,
 		}
@@ -107,12 +119,16 @@ func _save_score() -> void:
 
 
 func end_game():
+	$CanvasLayer/EndGameScreen/Sticker.hide()
+	$CanvasLayer/EndGameScreen/VBoxContainer/HighScore/Label.show()
 	is_in_game = false
 	yield(get_tree().create_timer(1.0),"timeout")
+	_save_score()
+	
 	$CanvasLayer/HUD.hide()
 	$CanvasLayer/EndGameScreen/VBoxContainer/VBoxContainer/Score.text = str(current_height) + "m"
+	$CanvasLayer/EndGameScreen/VBoxContainer/HighScore/Score.text = str(max_height) + "m"
 	$CanvasLayer/EndGameScreen.show()
-	_save_score()
 	
 
 func get_scroll_direction() -> float:

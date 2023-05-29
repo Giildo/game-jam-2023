@@ -4,6 +4,7 @@
 script/source = "extends Camera2D
 
 export var step_size = 50
+signal item_lost
 
 var lost = preload(\"res://effects/LostItem.tscn\")
 
@@ -36,6 +37,7 @@ func _on_Area2D_body_entered(body: Node):
 		l.position.y = get_viewport().get_visible_rect().size.y
 		
 		add_child(l)
+		emit_signal('item_lost')
 "
 
 [sub_resource type="RectangleShape2D" id=2]

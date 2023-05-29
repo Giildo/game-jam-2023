@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://lobby/lobby.gd" type="Script" id=1]
 [ext_resource path="res://lobby/player_icon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://lobby/icons/buttons/start_icon.tres" type="Texture" id=4]
+[ext_resource path="res://gui/assets/HIGH Thoughts.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=3]
 size = 80
@@ -72,9 +73,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -892.0
-margin_top = -223.0
+margin_top = -153.0
 margin_right = 892.0
-margin_bottom = 127.0
+margin_bottom = 197.0
 rect_pivot_offset = Vector2( 897, 153 )
 custom_constants/separation = 70
 alignment = 1
@@ -136,3 +137,12 @@ text = "START GAME"
 autoplay = "Blink"
 anims/Blink = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="HighThoughts" type="TextureRect" parent="."]
+margin_left = 430.0
+margin_top = 26.0
+margin_right = 1528.0
+margin_bottom = 289.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6

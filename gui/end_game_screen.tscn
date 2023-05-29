@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui/assets/title.tres" type="DynamicFont" id=2]
@@ -27,6 +27,46 @@ use_filter = true
 extra_spacing_top = -8
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 100
+outline_size = 11
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "pop"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ) ]
+}
+
 [node name="EndGameScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,44 +78,71 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.568627 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -428.0
-margin_top = -389.0
-margin_right = 428.0
-margin_bottom = 94.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_constants/separation = 80
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1141.0
-margin_bottom = 209.0
+[node name="Label" type="Label" parent="."]
+margin_left = 389.5
+margin_top = 54.0
+margin_right = 1530.5
+margin_bottom = 263.0
 custom_colors/font_color = Color( 1, 0.713726, 0.901961, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "No thoughts left"
 align = 1
 uppercase = true
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -428.0
+margin_top = -262.0
+margin_right = 428.0
+margin_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 50
+alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 289.0
-margin_right = 1141.0
-margin_bottom = 536.0
+margin_top = 14.0
+margin_right = 856.0
+margin_bottom = 237.0
+custom_constants/separation = -20
 
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
-margin_right = 1141.0
+margin_right = 856.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
 text = "You managed to reach:"
 align = 1
 
 [node name="Score" type="Label" parent="VBoxContainer/VBoxContainer"]
-margin_top = 78.0
-margin_right = 1141.0
-margin_bottom = 247.0
+margin_top = 54.0
+margin_right = 856.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 2 )
+text = "4500 m"
+align = 1
+
+[node name="HighScore" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 287.0
+margin_right = 856.0
+margin_bottom = 510.0
+custom_constants/separation = -20
+
+[node name="Label" type="Label" parent="VBoxContainer/HighScore"]
+margin_right = 856.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 1, 0.796078, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Record height:"
+align = 1
+
+[node name="Score" type="Label" parent="VBoxContainer/HighScore"]
+margin_top = 54.0
+margin_right = 856.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 1, 0.796078, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "4500 m"
 align = 1
@@ -151,3 +218,21 @@ margin_bottom = 92.0
 custom_fonts/font = SubResource( 3 )
 text = "Menu"
 align = 1
+
+[node name="Sticker" type="Label" parent="."]
+margin_left = 594.59
+margin_top = 529.888
+margin_right = 1342.59
+margin_bottom = 725.888
+rect_rotation = 0.295493
+rect_pivot_offset = Vector2( 366.247, 78.5973 )
+custom_colors/font_color = Color( 1, 0.352941, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "New record!"
+align = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sticker"]
+autoplay = "pop"
+anims/RESET = SubResource( 5 )
+anims/pop = SubResource( 6 )
