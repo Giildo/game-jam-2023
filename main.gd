@@ -8,7 +8,8 @@ var current_characters = []
 var is_in_game = false
 
 var current_height = 0
-
+var max_height = 0
+export var min_max_height = 3
 export var meter_unit = 150
 export var base_items_count = {
 	2: 20,
@@ -40,6 +41,7 @@ func start_game(characters: Array) -> void:
 		add_child(spawner)
 	
 	is_in_game = true
+	_load_data()
 	_update_height()
 
 func _check_finished():
@@ -52,7 +54,7 @@ func _update_height():
 	if not is_in_game:
 		return
 	
-	current_height = ceil($SmoothCamera/HeightEstimator.get_height() / meter_unit)
+	current_height = abs(stepify($SmoothCamera/HeightEstimator.get_height() / meter_unit, 0.01))
 	$CanvasLayer/HUD/HeightCount/Value.text = str(current_height)
 	yield(get_tree().create_timer(0.1), "timeout")
 	
@@ -70,7 +72,6 @@ func _update_count_display():
 
 
 func _decrease_spawn():
-	print_debug(available_items)
 	available_items -= 1
 	if available_items == 0:
 		for s in spawners:
@@ -78,6 +79,30 @@ func _decrease_spawn():
 	_update_count_display()
 
 
+func _load_data() -> void:
+	var saveFile = File.new()
+	if not saveFile.file_exists('user://score.cfg'):
+		_save_score()
+	saveFile.open('user://score.cfg', File.READ)
+	var data = parse_json(saveFile.get_as_text())
+	if not data:
+		max_height = min_max_height
+	else:
+		max_height = data.score if data.score > min_max_height else min_max_height
+	
+	$goal.position.y = $SmoothCamera/HeightEstimator.inital_height - max_height * meter_unit
+
+func _save_score() -> void:
+	if (current_height > max_height):
+		var data = {
+			"score": current_height,
+		}
+		max_height = current_height
+		
+		var saveFile = File.new()
+		saveFile.open("user://score.cfg", File.WRITE)
+		saveFile.store_line(to_json(data))
+		saveFile.close()
 
 
 func end_game():
@@ -86,6 +111,7 @@ func end_game():
 	$CanvasLayer/HUD.hide()
 	$CanvasLayer/EndGameScreen/VBoxContainer/VBoxContainer/Score.text = str(current_height) + "m"
 	$CanvasLayer/EndGameScreen.show()
+	_save_score()
 	
 
 func get_scroll_direction() -> float:
