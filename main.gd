@@ -5,9 +5,13 @@ extends Node
 var spawners = []
 var finished = 0
 var current_characters = []
+var is_in_game = false
 
+var current_height = 0
+
+export var meter_unit = 150
 export var base_items_count = {
-	2: 2,
+	2: 20,
 	3: 55,
 	4: 60,
 }
@@ -34,7 +38,9 @@ func start_game(characters: Array) -> void:
 		spawner.connect("finished", self, "_check_finished")
 		spawners.append(spawner)
 		add_child(spawner)
-
+	
+	is_in_game = true
+	_update_height()
 
 func _check_finished():
 	finished += 1
@@ -42,7 +48,17 @@ func _check_finished():
 		end_game()
 
 
-# Called when the node enters the scene tree for the first time.
+func _update_height():
+	if not is_in_game:
+		return
+	
+	current_height = ceil($SmoothCamera/HeightEstimator.get_height() / meter_unit)
+	$CanvasLayer/HUD/HeightCount/Value.text = str(current_height)
+	yield(get_tree().create_timer(0.1), "timeout")
+	
+	_update_height()
+
+
 func _ready():
 	$CanvasLayer/HUD.hide()
 	$CanvasLayer/EndGameScreen.hide()
@@ -65,8 +81,10 @@ func _decrease_spawn():
 
 
 func end_game():
+	is_in_game = false
 	yield(get_tree().create_timer(1.0),"timeout")
 	$CanvasLayer/HUD.hide()
+	$CanvasLayer/EndGameScreen/VBoxContainer/VBoxContainer/Score.text = str(current_height) + "m"
 	$CanvasLayer/EndGameScreen.show()
 	
 
