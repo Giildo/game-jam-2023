@@ -131,7 +131,7 @@ func spawn() -> void:
 		return
 	
 	var spawn_position = Vector2(
-		(get_viewport().size.x * (player_index + 1)) / (nb + 1),
+		(get_viewport().get_visible_rect().size.x * (player_index + 1)) / (nb + 1),
 		 -get_viewport().canvas_transform.origin.y
 	)
 	randomize()
