@@ -6,7 +6,7 @@ script/source = "extends Node2D
 export var ray_count = 10
 var rays = []
 
-var inital_height = 972
+export var inital_height = 975
 
 func _ready():
 	var screen_width = get_viewport().get_visible_rect().size.x

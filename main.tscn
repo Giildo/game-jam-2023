@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://test_scene.tscn" type="PackedScene" id=2]
@@ -17,14 +17,23 @@ use_filter = true
 extra_spacing_top = -8
 font_data = ExtResource( 5 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 70
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -8
+font_data = ExtResource( 5 )
+
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
+min_max_height = 4
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
 
 [node name="SmoothCamera" parent="." instance=ExtResource( 3 )]
 
 [node name="HeightEstimator" parent="SmoothCamera" instance=ExtResource( 8 )]
+ray_count = 20
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -105,6 +114,22 @@ text = "m"
 [node name="Lobby" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [node name="EndGameScreen" parent="CanvasLayer" instance=ExtResource( 7 )]
+
+[node name="goal" type="Line2D" parent="."]
+points = PoolVector2Array( -23, 0, 1943, 0 )
+default_color = Color( 1, 0.796078, 0, 1 )
+
+[node name="Label" type="Label" parent="goal"]
+margin_left = 1721.0
+margin_top = -82.0
+margin_right = 1890.0
+margin_bottom = 5.0
+custom_colors/font_color = Color( 1, 0.796078, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.623529 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 2 )
+text = "Record"
 
 [connection signal="game_start_requested" from="CanvasLayer/Lobby" to="." method="_on_Lobby_game_start_requested"]
 [connection signal="menu_requested" from="CanvasLayer/EndGameScreen" to="." method="_on_EndGameScreen_menu_requested"]
