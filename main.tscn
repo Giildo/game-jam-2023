@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://test_scene.tscn" type="PackedScene" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://gui/assets/box_icon.png" type="Texture" id=6]
 [ext_resource path="res://gui/end_game_screen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://camera/height_estimator.tscn" type="PackedScene" id=8]
-[ext_resource path="res://gui/assets/meter_icon.png" type="Texture" id=9]
+[ext_resource path="res://gui/assets/Height.png" type="Texture" id=9]
+[ext_resource path="res://gui/assets/Height Gold.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -28,7 +29,7 @@ font_data = ExtResource( 5 )
 script = ExtResource( 1 )
 min_max_height = 4
 
-[node name="Node2D" parent="." instance=ExtResource( 2 )]
+[node name="Game" parent="." instance=ExtResource( 2 )]
 
 [node name="SmoothCamera" parent="." instance=ExtResource( 3 )]
 
@@ -102,6 +103,41 @@ custom_fonts/font = SubResource( 1 )
 text = "0"
 
 [node name="Label" type="Label" parent="CanvasLayer/HUD/HeightCount"]
+margin_left = 101.0
+margin_right = 142.0
+margin_bottom = 74.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.552941 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 1 )
+text = "m"
+
+[node name="MaxHeight" type="HBoxContainer" parent="CanvasLayer/HUD"]
+margin_left = 28.0
+margin_top = 183.0
+margin_right = 185.0
+margin_bottom = 257.0
+custom_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/MaxHeight"]
+margin_right = 60.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="Value" type="Label" parent="CanvasLayer/HUD/MaxHeight"]
+margin_left = 67.0
+margin_right = 94.0
+margin_bottom = 74.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.552941 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/MaxHeight"]
 margin_left = 101.0
 margin_right = 142.0
 margin_bottom = 74.0

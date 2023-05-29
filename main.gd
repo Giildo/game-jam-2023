@@ -32,7 +32,7 @@ func start_game(characters: Array) -> void:
 	available_items = base_items_count[characters.size()]
 	_update_count_display()
 	$CanvasLayer/HUD.show()
-	_update_height()
+	_load_data()
 	
 	yield(get_tree().create_timer(1.0), "timeout")
 	for i in range(characters.size()):
@@ -43,7 +43,7 @@ func start_game(characters: Array) -> void:
 		add_child(spawner)
 	
 	is_in_game = true
-	_load_data()
+	_update_height()
 
 func _check_finished():
 	finished += 1
@@ -99,7 +99,8 @@ func _load_data() -> void:
 		max_height = min_max_height
 	else:
 		max_height = data.score if data.score > min_max_height else min_max_height
-	
+		
+	$CanvasLayer/HUD/MaxHeight/Value.text = str(max_height)
 	$goal.position.y = $SmoothCamera/HeightEstimator.inital_height - max_height * meter_unit
 
 func _save_score() -> void:
