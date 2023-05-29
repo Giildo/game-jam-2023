@@ -12,7 +12,7 @@ var max_height = 0
 export var min_max_height = 1
 export var meter_unit = 150
 export var base_items_count = {
-	2: 20,
+	2: 50,
 	3: 55,
 	4: 60,
 }
@@ -20,6 +20,12 @@ export var base_items_count = {
 var available_items = 0
 
 func start_game(characters: Array) -> void:
+	$Lobby.stream_paused = true
+	$Game.stream_paused = false
+	
+	$Record.stop()
+	$GameOver.stop()
+	
 	for b in get_tree().get_nodes_in_group('blocs'):
 		b.queue_free()
 	for s in spawners:
@@ -63,6 +69,8 @@ func _update_height():
 
 
 func _ready():
+	$Game.stream_paused = true
+	
 	$CanvasLayer/HUD.hide()
 	$CanvasLayer/EndGameScreen.hide()
 	$CanvasLayer/EndGameScreen/HBoxContainer/Lobby.show()
@@ -116,9 +124,18 @@ func _save_score() -> void:
 		saveFile.open("user://score.cfg", File.WRITE)
 		saveFile.store_line(to_json(data))
 		saveFile.close()
-
+	
 
 func end_game():
+	
+	
+	$Game.stream_paused = true
+	if (current_height > max_height):
+		$Record.play()
+	else:
+		$GameOver.play()
+	
+	
 	$CanvasLayer/EndGameScreen/Sticker.hide()
 	$CanvasLayer/EndGameScreen/VBoxContainer/HighScore/Label.show()
 	is_in_game = false
@@ -157,11 +174,13 @@ func _on_Lobby_game_start_requested(characters):
 func _on_EndGameScreen_restart_requested():
 	$CanvasLayer/EndGameScreen.hide()
 	start_game(current_characters)
-	
 
 
 func _on_EndGameScreen_menu_requested():
 	$CanvasLayer/EndGameScreen.hide()
 	$CanvasLayer/Lobby.reset_selection()
-	
 	$CanvasLayer/Lobby.show()
+	$Game.stream_paused = true
+	$Lobby.stream_paused = false
+	$Record.stop()
+	$GameOver.stop()

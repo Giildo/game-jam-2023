@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/NewThought.mp3-f9b0627592748ca3983950a26f348660.mp3str"
+
+[deps]
+
+source_file="res://audio/NewThought.mp3"
+dest_files=[ "res://.import/NewThought.mp3-f9b0627592748ca3983950a26f348660.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -60,6 +60,7 @@ func stop_item():
 	Input.start_joy_vibration(player_index - 1, 0, 0.75, 0.4)
 
 func has_collision (item: PhysicsBody2D) -> void:
+	$Hit.play()
 	if item is StaticBody2D and not item.is_in_group("walls"):
 		stop_item()
 	elif item.is_in_group("blocs"):
