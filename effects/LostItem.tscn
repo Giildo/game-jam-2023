@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://effects/Faisceau.png" type="Texture" id=1]
 [ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://audio/Fall.mp3" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=3]
 size = 319
@@ -83,6 +84,20 @@ tracks/5/keys = {
 "args": [  ],
 "method": "queue_free"
 } ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -183,3 +198,7 @@ autoplay = "Pop"
 playback_speed = 0.7
 anims/Pop = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
