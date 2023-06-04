@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Student.png-e1c41fa423c3e995d111d56b0cce2ce7.stex"
+path="res://.import/icon_assigned.png-f46ec376e75fb2697781f82e9154fd71.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lobby/icons/characters/Student.png"
-dest_files=[ "res://.import/Student.png-e1c41fa423c3e995d111d56b0cce2ce7.stex" ]
+source_file="res://lobby/icons/slots/icon_assigned.png"
+dest_files=[ "res://.import/icon_assigned.png-f46ec376e75fb2697781f82e9154fd71.stex" ]
 
 [params]
 

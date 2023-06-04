@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://lobby/lobby.gd" type="Script" id=1]
-[ext_resource path="res://lobby/player_icon.tscn" type="PackedScene" id=2]
-[ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://lobby/player_slot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/assets/PatrickHand-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://lobby/icons/buttons/start_icon.tres" type="Texture" id=4]
 [ext_resource path="res://gui/assets/HIGH Thoughts.png" type="Texture" id=5]
 
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( -2, -2 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -67,7 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.568627 )
 
-[node name="Players" type="HBoxContainer" parent="."]
+[node name="PlayerSlots" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -80,22 +80,22 @@ rect_pivot_offset = Vector2( 897, 153 )
 custom_constants/separation = 70
 alignment = 1
 
-[node name="P1" parent="Players" instance=ExtResource( 2 )]
+[node name="Slot1" parent="PlayerSlots" instance=ExtResource( 2 )]
 margin_left = 87.0
 margin_right = 437.0
 margin_bottom = 350.0
 
-[node name="P2" parent="Players" instance=ExtResource( 2 )]
+[node name="Slot2" parent="PlayerSlots" instance=ExtResource( 2 )]
 margin_left = 507.0
 margin_right = 857.0
 margin_bottom = 350.0
 
-[node name="P3" parent="Players" instance=ExtResource( 2 )]
+[node name="Slot3" parent="PlayerSlots" instance=ExtResource( 2 )]
 margin_left = 927.0
 margin_right = 1277.0
 margin_bottom = 350.0
 
-[node name="P4" parent="Players" instance=ExtResource( 2 )]
+[node name="Slot4" parent="PlayerSlots" instance=ExtResource( 2 )]
 margin_left = 1347.0
 margin_right = 1697.0
 margin_bottom = 350.0

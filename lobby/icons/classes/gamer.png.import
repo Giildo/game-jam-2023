@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/add_button.png-4f62b88c7f49a67722d73b787a6cca2d.stex"
+path="res://.import/gamer.png-744a92230d37b66625411315d88b186f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lobby/add_button.png"
-dest_files=[ "res://.import/add_button.png-4f62b88c7f49a67722d73b787a6cca2d.stex" ]
+source_file="res://lobby/icons/classes/gamer.png"
+dest_files=[ "res://.import/gamer.png-744a92230d37b66625411315d88b186f.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

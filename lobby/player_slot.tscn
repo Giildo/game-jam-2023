@@ -1,53 +1,42 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://gui/assets/font_32.tres" type="DynamicFont" id=1]
-[ext_resource path="res://lobby/icons/characters/Builder.png" type="Texture" id=2]
-[ext_resource path="res://lobby/arrow.png" type="Texture" id=3]
-[ext_resource path="res://lobby/player_icon.gd" type="Script" id=5]
-[ext_resource path="res://lobby/icons/buttons/back_icon.tres" type="Texture" id=6]
-[ext_resource path="res://lobby/icons/buttons/ok_icon.tres" type="Texture" id=7]
-[ext_resource path="res://lobby/icons/IconeSelect.png" type="Texture" id=8]
-[ext_resource path="res://lobby/icons/IconeReady.png" type="Texture" id=9]
-[ext_resource path="res://lobby/icons/IconeInvalid.png" type="Texture" id=10]
-[ext_resource path="res://lobby/icons/IconeJoin.png" type="Texture" id=11]
+[ext_resource path="res://lobby/icons/classes/builder.png" type="Texture" id=1]
+[ext_resource path="res://lobby/player_slot.gd" type="Script" id=2]
+[ext_resource path="res://gui/assets/font_32.tres" type="DynamicFont" id=3]
+[ext_resource path="res://lobby/icons/arrow.png" type="Texture" id=4]
+[ext_resource path="res://lobby/icons/slots/icon_assigned.png" type="Texture" id=5]
+[ext_resource path="res://lobby/icons/slots/icon_selected.png" type="Texture" id=6]
+[ext_resource path="res://lobby/icons/slots/icon_invalid.png" type="Texture" id=7]
+[ext_resource path="res://lobby/icons/buttons/back_icon.tres" type="Texture" id=8]
+[ext_resource path="res://lobby/icons/buttons/ok_icon.tres" type="Texture" id=9]
+[ext_resource path="res://lobby/icons/slots/icon_empty.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fade"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+length = 0.3
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("../../..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( -2, -2, -2 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_update_visuals"
+} ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath("../../..")
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "_update_type_icon"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:rect_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
+"times": PoolRealArray( 0, 0.15, 0.29 ),
 "transitions": PoolRealArray( 2, 0.5, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
@@ -78,6 +67,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -146,41 +147,39 @@ margin_bottom = 230.0
 rect_min_size = Vector2( 350, 350 )
 custom_constants/separation = 32
 alignment = 1
-script = ExtResource( 5 )
-ok_icon = ExtResource( 7 )
-back_icon = ExtResource( 6 )
-icon_join = ExtResource( 11 )
-icon_invalid = ExtResource( 10 )
-icon_select = ExtResource( 8 )
-icon_ready = ExtResource( 9 )
+script = ExtResource( 2 )
+empty_icon = ExtResource( 10 )
+assigned_icon = ExtResource( 5 )
+selected_icon = ExtResource( 6 )
+invalid_icon = ExtResource( 7 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Content" type="HBoxContainer" parent="."]
 margin_top = 8.0
 margin_right = 350.0
 margin_bottom = 200.0
 custom_constants/separation = 16
 alignment = 1
 
-[node name="Left" type="TextureButton" parent="HBoxContainer"]
+[node name="LeftArrow" type="TextureButton" parent="Content"]
 margin_left = 31.0
 margin_right = 63.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 32, 32 )
 rect_pivot_offset = Vector2( 23, 96 )
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+[node name="Slot" type="TextureRect" parent="Content"]
 margin_left = 79.0
 margin_right = 271.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 192, 192 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
-[node name="Character" type="TextureRect" parent="HBoxContainer/Icon"]
+[node name="Icon" type="TextureRect" parent="Content/Slot"]
 show_behind_parent = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -191,27 +190,27 @@ margin_top = -91.0
 margin_right = 91.0
 margin_bottom = 91.0
 rect_pivot_offset = Vector2( 90, 90 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/Icon/Character"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Content/Slot/Icon"]
 anims/Fade = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
-[node name="Right" type="TextureButton" parent="HBoxContainer"]
+[node name="RightArrow" type="TextureButton" parent="Content"]
 margin_left = 287.0
 margin_right = 319.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 32, 32 )
 rect_pivot_offset = Vector2( 8, 96 )
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer"]
-root_node = NodePath("../Left")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Content"]
+root_node = NodePath("../LeftArrow")
 anims/RESET = SubResource( 3 )
 anims/Stretch = SubResource( 4 )
 
@@ -222,49 +221,49 @@ margin_bottom = 342.0
 rect_min_size = Vector2( 0, 110 )
 custom_constants/separation = 8
 
-[node name="TooltipSelect" type="HBoxContainer" parent="Tooltips"]
-margin_left = 99.0
-margin_right = 251.0
+[node name="AcceptTooltip" type="HBoxContainer" parent="Tooltips"]
+margin_left = 110.0
+margin_right = 239.0
 margin_bottom = 48.0
 size_flags_horizontal = 4
 custom_constants/separation = 16
 
-[node name="Buttons" type="TextureRect" parent="Tooltips/TooltipSelect"]
+[node name="Buttons" type="TextureRect" parent="Tooltips/AcceptTooltip"]
 margin_right = 48.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Tooltips/TooltipSelect"]
+[node name="Label" type="Label" parent="Tooltips/AcceptTooltip"]
 margin_left = 64.0
-margin_right = 152.0
+margin_right = 129.0
 margin_bottom = 47.0
-custom_fonts/font = ExtResource( 1 )
-text = "select"
+custom_fonts/font = ExtResource( 3 )
+text = "back"
 align = 1
 
-[node name="TooltipJoin" type="HBoxContainer" parent="Tooltips"]
-margin_left = 117.0
+[node name="BackTooltip" type="HBoxContainer" parent="Tooltips"]
+margin_left = 99.0
 margin_top = 56.0
-margin_right = 233.0
+margin_right = 251.0
 margin_bottom = 104.0
 size_flags_horizontal = 4
 custom_constants/separation = 16
 
-[node name="Buttons" type="TextureRect" parent="Tooltips/TooltipJoin"]
+[node name="Buttons" type="TextureRect" parent="Tooltips/BackTooltip"]
 margin_right = 48.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Tooltips/TooltipJoin"]
+[node name="Label" type="Label" parent="Tooltips/BackTooltip"]
 margin_left = 64.0
-margin_right = 116.0
+margin_right = 152.0
 margin_bottom = 47.0
-custom_fonts/font = ExtResource( 1 )
-text = "join"
+custom_fonts/font = ExtResource( 3 )
+text = "select"
 align = 1

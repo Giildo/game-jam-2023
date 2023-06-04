@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IconeSelect.png-bd278b25eb99255f7e745d911dfc4b02.stex"
+path="res://.import/arrow.png-35309ea793f3ac4aac4f3262fd3b3e76.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lobby/icons/IconeSelect.png"
-dest_files=[ "res://.import/IconeSelect.png-bd278b25eb99255f7e745d911dfc4b02.stex" ]
+source_file="res://lobby/icons/arrow.png"
+dest_files=[ "res://.import/arrow.png-35309ea793f3ac4aac4f3262fd3b3e76.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

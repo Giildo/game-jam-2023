@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IconeJoin.png-f803f4ba2ab979a898919963e09a89fb.stex"
+path="res://.import/icon_selected.png-e96e4f07ca23961961498ca5481328cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lobby/icons/IconeJoin.png"
-dest_files=[ "res://.import/IconeJoin.png-f803f4ba2ab979a898919963e09a89fb.stex" ]
+source_file="res://lobby/icons/slots/icon_selected.png"
+dest_files=[ "res://.import/icon_selected.png-e96e4f07ca23961961498ca5481328cc.stex" ]
 
 [params]
 

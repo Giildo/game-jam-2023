@@ -1,10 +1,10 @@
+class_name Lobby
 extends Control
-
-var players: Array = []
 
 signal game_start_requested(characters)
 
-var players_count = 0
+var player_slots = []
+var ready_players_count = 0
 var can_play = false
 
 
@@ -15,42 +15,46 @@ func _input(event):
 
 
 func _ready():
-	players = $Players.get_children()
-	for p in players:
-		p.connect("type_selected", self, "_on_player_selection")
-		p.connect("type_deselected", self, "_on_player_deselection")
+	player_slots = $PlayerSlots.get_children()
+	for p in player_slots:
+		p.connect("class_selected", self, "_on_slot_class_selected")
+		p.connect("class_deselected", self, "_on_slot_class_deselected")
 	_update_play_status()
-
-func _on_player_selection(type):
-	players_count += 1
-	for p in players:
-		(p as PlayerIcon).set_type_available(type, false)
-	_update_play_status()
-
-
-func _on_player_deselection(type):
-	players_count -= 1
-	for p in players:
-		(p as PlayerIcon).set_type_available(type, true)
-	_update_play_status()
-
-
-func _update_play_status():
-	can_play = (players_count >= 2)
-	$PlayTooltip.visible = can_play
 
 
 func reset_selection():
-	for p in players:
+	for p in player_slots:
 		if p.is_selected:
 			p.is_selected = false
 
 
 func start_game():
-	var characters = []
-	for p in players:
-		if p.is_assigned:
-			characters.append((p.selected_type))
+	var classes = []
+	for p in player_slots:
+		if p.is_selected():
+			classes.append(p.selected_type)
 	
-	emit_signal("game_start_requested", characters)
+	emit_signal("game_start_requested", classes)
 	hide()
+
+
+func _on_slot_class_selected(selection):
+	ready_players_count += 1
+	for p in player_slots:
+		p.set_class_available(selection, false)
+	_update_play_status()
+
+
+func _on_slot_class_deselected(selection):
+	ready_players_count -= 1
+	for p in player_slots:
+		p.set_class_available(selection, true)
+	_update_play_status()
+
+
+func _update_play_status():
+	can_play = (ready_players_count >= 2)
+	if can_play and not $PlayTooltip.visible:
+		$PlayTooltip/AnimationPlayer.seek(0.0)
+	
+	$PlayTooltip.visible = can_play

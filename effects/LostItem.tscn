@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://effects/Faisceau.png" type="Texture" id=1]
-[ext_resource path="res://lobby/PatrickHand-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://gui/assets/PatrickHand-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://audio/Fall.mp3" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=3]
